@@ -18,6 +18,7 @@ function randomRGB() {
   return `rgb(${random(0, 255)},${random(0, 255)},${random(0, 255)})`;
 }
 
+
 class Shape {
   constructor(x, y, velX, velY) {
     this.x = x;
@@ -29,7 +30,7 @@ class Shape {
 
 class EvilCircle extends Shape{
   constructor(x, y) {
-    super(x, y, 20, 20)
+    super(x, y, 20, 20);
     this.color = white;
     this.size = 10;
 
@@ -162,7 +163,7 @@ class Ball extends Shape{
 }
 
 const balls = [];
-//const EvilCircle = [];
+//const EvilCircle = new EvilCircle(5, 5);
 
 while (balls.length < 25) {
   const size = random(10, 20);
@@ -185,14 +186,14 @@ function loop() {
   ctx.fillRect(0, 0, width, height);
 
   for (const ball of balls) {
-    //if (exists) {
+    if (ball.exists) {
       ball.draw();
       ball.update();
       ball.collisionDetect();
-    //}
+    }
   }
 
-  // for (const EvilCircle) {
+  // for (EvilCircle) {
   //   EvilCircle.draw();
   //   EvilCircle.checkBounds();
   //   EvilCircle.collisionDetect();
